@@ -43,16 +43,8 @@ Customer retention is a key growth driver in e-commerce.
 ##  Architecture Overview  
 **Databricks Medallion Architecture**
 
-Olist CSV Data (Customers, Orders, Items, Payments, Products)
-  - Bronze Layer (Raw ingestion - bronze_customers, bronze_orders, bronze_order_items, bronze_payments, bronze_products)
-  - Silver Layer (Cleaned and transformed data - silver_orders, silver_orders_payments, silver_customer_summary)
-  - Gold Layer (gold_customer_features - total_orders, total_spent, avg_order_value, repeat_customer)
-  - ML Layer (VectorAssembler, Logistic Regression, MLflow Tracking)
-        
-Business Output
-- Identify repeat customers
-- Targeted retention
-- Reduced marketing cost
+<img width="1024" height="1536" alt="Architecture" src="https://github.com/user-attachments/assets/2163ad76-8ff6-40ac-8a1e-c107bb7e9210" />
+
 
 ---
 
