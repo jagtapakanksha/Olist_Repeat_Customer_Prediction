@@ -46,14 +46,12 @@ Customer retention is a key growth driver in e-commerce.
  Raw CSV Files
  
       │
-      ▼
  
  Bronze Layer
    - Raw ingestion
    - No transformations
      
       │
-      ▼
  
  Silver Layer
    - Cleaned data
@@ -61,14 +59,12 @@ Customer retention is a key growth driver in e-commerce.
    - Customer-level aggregation
      
       │
-      ▼
  
  Gold Layer
    - Feature engineering
    - ML-ready dataset
      
       │
-      ▼
  
  ML Layer
    - Model training
