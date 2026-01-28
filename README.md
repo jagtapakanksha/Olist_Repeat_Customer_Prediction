@@ -12,7 +12,6 @@ End-to-end Databricks Lakehouse project to predict repeat customers using **PySp
 <p align="center">
   <img src="https://img.shields.io/badge/Architecture-Medallion-brightgreen"/>
   <img src="https://img.shields.io/badge/Domain-E--Commerce-lightgrey"/>
-  <img src="https://img.shields.io/badge/Status-Competition%20Ready-success"/>
 </p>
 
 ---
@@ -45,12 +44,14 @@ Customer retention is a key growth driver in e-commerce.
 **Databricks Medallion Architecture**
 
  Raw CSV Files
+ 
       │
       ▼
  
  Bronze Layer
    - Raw ingestion
    - No transformations
+     
       │
       ▼
  
@@ -58,12 +59,14 @@ Customer retention is a key growth driver in e-commerce.
    - Cleaned data
    - Business joins
    - Customer-level aggregation
+     
       │
       ▼
  
  Gold Layer
    - Feature engineering
    - ML-ready dataset
+     
       │
       ▼
  
