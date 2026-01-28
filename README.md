@@ -44,7 +44,6 @@ Customer retention is a key growth driver in e-commerce.
 **Databricks Medallion Architecture**
 
  Raw CSV Files
- 
       │
  
  Bronze Layer
