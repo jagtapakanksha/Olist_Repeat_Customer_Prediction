@@ -42,72 +42,43 @@ Customer retention is a key growth driver in e-commerce.
 
 ##  Architecture Overview  
 **Databricks Medallion Architecture**
+```text
+Olist CSV Data (Customers, Orders, Items, Payments, Products)
+        |
+        v
+Bronze Layer (Raw)
+- bronze_customers
+- bronze_orders
+- bronze_order_items
+- bronze_payments
+- bronze_products
+        |
+        v
+Silver Layer (Cleaned)
+- silver_orders
+- silver_orders_payments
+- silver_customer_summary
+        |
+        v
+Gold Layer (Features)
+- gold_customer_features
+  - total_orders
+  - total_spent
+  - avg_order_value
+  - repeat_customer
+        |
+        v
+ML Layer
+- VectorAssembler
+- Logistic Regression
+- MLflow Tracking
+        |
+        v
+Business Output
+- Identify repeat customers
+- Targeted retention
+- Reduced marketing cost
 
-┌──────────────────────────── ┐
-│       Olist CSV Data        │
-│ (Customers, Orders, Items,  │
-│  Payments, Products)        │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│   Bronze Layer (Raw)        │
-│ Databricks Delta Tables     │
-│ - bronze_customers          │
-│ - bronze_orders             │
-│ - bronze_order_items        │
-│ - bronze_payments           │
-│ - bronze_products           │
-│                             │
-│ ✔ Raw ingestion             │
-│ ✔ No transformations        │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│   Silver Layer (Cleaned)    │
-│ Databricks Delta Tables     │
-│ - silver_orders             │
-│ - silver_orders_payments    │
-│ - silver_customer_summary   │
-│                             │
-│ ✔ Delivered orders only     │
-│ ✔ Business joins            │
-│ ✔ Aggregations              │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│   Gold Layer (Features)     │
-│ Databricks Delta Table      │
-│ - gold_customer_features    │
-│                             │
-│ ✔ total_orders              │
-│ ✔ total_spent               │
-│ ✔ avg_order_value           │
-│ ✔ repeat_customer (label)   │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│    ML Layer                 │
-│ PySpark ML + MLflow         │
-│                             │
-│ - VectorAssembler           │
-│ - Logistic Regression       │
-│ - Train/Test Split          │
-│ - ROC-AUC & Precision       │
-│ - MLflow Experiment         │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│    Business Output          │
-│                             │
-│ - Identify repeat customers │
-│ - Targeted retention        │
-│ - Reduced marketing cost    │
-└─────────────────────────────┘
 
 ---
 
