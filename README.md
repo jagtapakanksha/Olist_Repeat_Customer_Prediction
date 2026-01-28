@@ -43,23 +43,71 @@ Customer retention is a key growth driver in e-commerce.
 ##  Architecture Overview  
 **Databricks Medallion Architecture**
 
- Raw CSV Files
- 
-      ↓
-
-Bronze Layer (Raw Ingestion)
-    
-      ↓
-
-Silver Layer (Cleaned & Joined Data)
-     
-      ↓
-
-Gold Layer (Business Features)
-      
-      ↓
-
-ML Layer (Model Training + MLflow)
+┌──────────────────────────── ┐
+│       Olist CSV Data        │
+│ (Customers, Orders, Items,  │
+│  Payments, Products)        │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│   Bronze Layer (Raw)        │
+│ Databricks Delta Tables     │
+│ - bronze_customers          │
+│ - bronze_orders             │
+│ - bronze_order_items        │
+│ - bronze_payments           │
+│ - bronze_products           │
+│                             │
+│ ✔ Raw ingestion             │
+│ ✔ No transformations        │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│   Silver Layer (Cleaned)    │
+│ Databricks Delta Tables     │
+│ - silver_orders             │
+│ - silver_orders_payments    │
+│ - silver_customer_summary   │
+│                             │
+│ ✔ Delivered orders only     │
+│ ✔ Business joins            │
+│ ✔ Aggregations              │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│   Gold Layer (Features)     │
+│ Databricks Delta Table      │
+│ - gold_customer_features    │
+│                             │
+│ ✔ total_orders              │
+│ ✔ total_spent               │
+│ ✔ avg_order_value           │
+│ ✔ repeat_customer (label)   │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│    ML Layer                 │
+│ PySpark ML + MLflow         │
+│                             │
+│ - VectorAssembler           │
+│ - Logistic Regression       │
+│ - Train/Test Split          │
+│ - ROC-AUC & Precision       │
+│ - MLflow Experiment         │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│    Business Output          │
+│                             │
+│ - Identify repeat customers │
+│ - Targeted retention        │
+│ - Reduced marketing cost    │
+└─────────────────────────────┘
 
 ---
 
@@ -79,7 +127,7 @@ ML Layer (Model Training + MLflow)
 - Schema inferred automatically
 - Stored as Delta tables
 
-✔ Ensures **traceability and replayability**
+Bronze layer ensures **traceability and replayability**
 
 ---
 
@@ -97,7 +145,7 @@ ML Layer (Model Training + MLflow)
 - `total_orders`
 - `total_spent`
 
-✔ Produces **clean and reliable customer metrics**
+Silver layer produces **clean and reliable customer metrics**
 
 ---
 
@@ -164,7 +212,7 @@ MLflow is used for **reproducibility and experiment governance**.
 - ROC-AUC score
 - Precision score
 
-✔ Aligns with **production ML best practices**
+Aligns with **production ML best practices**
 
 ---
 
@@ -187,7 +235,7 @@ MLflow is used for **reproducibility and experiment governance**.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Category   | Tools        |
 |------------|--------------|
