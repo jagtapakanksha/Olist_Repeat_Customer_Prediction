@@ -44,13 +44,21 @@ Customer retention is a key growth driver in e-commerce.
 **Databricks Medallion Architecture**
 
  Raw CSV Files
+ 
       ↓
+
 Bronze Layer (Raw Ingestion)
+    
       ↓
+
 Silver Layer (Cleaned & Joined Data)
+     
       ↓
+
 Gold Layer (Business Features)
+      
       ↓
+
 ML Layer (Model Training + MLflow)
 
 ---
