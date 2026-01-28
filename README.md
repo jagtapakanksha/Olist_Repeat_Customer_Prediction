@@ -18,6 +18,8 @@ End-to-end Databricks Lakehouse project to predict repeat customers using **PySp
 
 ## Project Overview
 
+Dataset: Olist Brazilian E-Commerce Public Dataset (https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+
 This project builds a **production-style end-to-end analytics and machine learning pipeline** on Databricks using the **Olist e-commerce dataset**.
 
 The objective is to **predict whether a customer will make a repeat purchase** based on historical order behavior and customer-level features.
@@ -44,16 +46,6 @@ Customer retention is a key growth driver in e-commerce.
 **Databricks Medallion Architecture**
 
 <img width="1024" height="1536" alt="Architecture" src="https://github.com/user-attachments/assets/2163ad76-8ff6-40ac-8a1e-c107bb7e9210" />
-
----
-
-## Project Structure
-
-├── 01_bronze_raw_data.dbc
-├── 02_silver_clean_data.dbc
-├── 03_gold_features.dbc
-├── 04_ml_repeat_customers.dbc
-├── README.md
 
 ---
 
