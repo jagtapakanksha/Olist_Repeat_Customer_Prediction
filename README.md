@@ -17,7 +17,7 @@ End-to-end Databricks Lakehouse project to predict repeat customers using **PySp
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project builds a **production-style end-to-end analytics and machine learning pipeline** on Databricks using the **Olist e-commerce dataset**.
 
@@ -27,7 +27,7 @@ The project follows **industry-standard Lakehouse principles** and demonstrates 
 
 ---
 
-## 💼 Business Problem
+## Business Problem
 
 Customer retention is a key growth driver in e-commerce.
 
@@ -41,47 +41,36 @@ Customer retention is a key growth driver in e-commerce.
 
 ---
 
-## 🏗 Architecture Overview  
+##  Architecture Overview  
 **Databricks Medallion Architecture**
 
-Raw CSV Files
-│
-▼
-Bronze Layer
-
-Raw ingestion
-
-No transformations
-│
-▼
-Silver Layer
-
-Cleaned data
-
-Business joins
-
-Customer-level aggregation
-│
-▼
-Gold Layer
-
-Feature engineering
-
-ML-ready dataset
-│
-▼
-ML Layer
-
-Model training
-
-Evaluation
-
-MLflow tracking
-
+ Raw CSV Files
+      │
+      ▼
+ Bronze Layer
+   - Raw ingestion
+   - No transformations
+      │
+      ▼
+ Silver Layer
+   - Cleaned data
+   - Business joins
+   - Customer-level aggregation
+      │
+      ▼
+ Gold Layer
+   - Feature engineering
+   - ML-ready dataset
+      │
+      ▼
+ ML Layer
+   - Model training
+   - Evaluation
+   - MLflow tracking
 
 ---
 
-## 🥉 Bronze Layer — Raw Data Ingestion
+## Bronze Layer — Raw Data Ingestion
 
 **Purpose:** Preserve raw data exactly as received.
 
@@ -101,7 +90,7 @@ MLflow tracking
 
 ---
 
-## 🥈 Silver Layer — Data Cleaning & Aggregation
+## Silver Layer — Data Cleaning & Aggregation
 
 **Purpose:** Apply business logic and prepare analytical datasets.
 
@@ -119,7 +108,7 @@ MLflow tracking
 
 ---
 
-## 🥇 Gold Layer — Feature Engineering
+## Gold Layer — Feature Engineering
 
 **Purpose:** Build ML-ready business features.
 
@@ -139,7 +128,7 @@ Final Table: **`gold_customer_features`**
 
 ---
 
-## 🤖 Machine Learning Layer
+## Machine Learning Layer
 
 **Objective:** Predict repeat customers using behavioral data.
 
@@ -158,7 +147,7 @@ Final Table: **`gold_customer_features`**
 
 ---
 
-## 📊 Model Evaluation
+## Model Evaluation
 
 The dataset is **highly imbalanced**, making accuracy misleading.
 
@@ -173,7 +162,7 @@ The dataset is **highly imbalanced**, making accuracy misleading.
 
 ---
 
-## 🔁 Experiment Tracking with MLflow
+## Experiment Tracking with MLflow
 
 MLflow is used for **reproducibility and experiment governance**.
 
@@ -186,7 +175,7 @@ MLflow is used for **reproducibility and experiment governance**.
 
 ---
 
-## 🔍 Key Insights
+## Key Insights
 - Repeat customers form a small fraction of the user base
 - Behavioral features still provide predictive value
 - Lakehouse + ML architecture scales well for real systems
@@ -218,7 +207,7 @@ MLflow is used for **reproducibility and experiment governance**.
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 
 This project demonstrates how to design a **scalable, production-ready data & ML pipeline** using modern Lakehouse principles.
 
@@ -230,7 +219,7 @@ It bridges:
 
 ---
 
-## 👩‍💻 Author
+## Author
 
 **Akanksha Jagtap**  
 Data Analyst | Data Enthusiast  
