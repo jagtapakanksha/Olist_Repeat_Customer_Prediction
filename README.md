@@ -1,6 +1,6 @@
 # Olist_Repeat_Customer_Prediction
 
-End-to-end Databricks Lakehouse project to predict repeat customers using **PySpark** and **MLflow**.
+End-to-end Databricks Lakehouse project to predict repeat customers using **PySpark** and **MLflow**
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Databricks-red?style=for-the-badge"/>
